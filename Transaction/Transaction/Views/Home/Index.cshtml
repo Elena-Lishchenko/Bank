@@ -1,0 +1,19 @@
+﻿@model Transaction.ViewModel.BanksListViewModel
+
+@{
+	ViewBag.Title = "Home Page";
+}
+
+@if (Model.Banks.Count > 0)
+{
+	using (Html.BeginForm("GetBankAccounts", "Home", FormMethod.Post))
+	{
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Accounts</h2>
+			@Html.DropDownListFor(m => m.SelectedBankId, new SelectList(Model.Banks, "Id", "Name"), new { @class = "form-control" })
+			<button type="submit" class="btn btn-outline-primary btn-lg">Get Accounts</button>
+		</div>
+	</div>
+	}
+}
